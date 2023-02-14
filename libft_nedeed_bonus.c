@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_nedeed.c                                     :+:      :+:    :+:   */
+/*   libft_nedded_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 21:45:03 by moelalj           #+#    #+#             */
-/*   Updated: 2023/02/11 21:45:06 by moelalj          ###   ########.fr       */
+/*   Created: 2023/02/11 21:47:00 by moelalj           #+#    #+#             */
+/*   Updated: 2023/02/13 15:44:03 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -45,7 +45,7 @@ void	ft_putnbr_fd(int nb, int fd)
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	write (fd, &c, 1);
 }
 
 int	ft_atoi(const char *str)

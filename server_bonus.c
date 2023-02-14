@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 21:43:58 by moelalj           #+#    #+#             */
-/*   Updated: 2023/02/11 21:44:24 by moelalj          ###   ########.fr       */
+/*   Created: 2023/02/13 12:51:44 by moelalj           #+#    #+#             */
+/*   Updated: 2023/02/13 15:43:25 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	bintodec(int *arr)
 	int	save;
 
 	save = 0;
-	pw = 0;
 	j = 7;
+	pw = 0;
 	while (pw <= 7)
 	{
 		save += arr[j] * ft_power(pw);
@@ -85,6 +85,6 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-		pause();
+		pause ();
 	return (0);
 }

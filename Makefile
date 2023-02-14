@@ -2,28 +2,57 @@ CLIENT = client
 
 SERVER = server
 
+CLIENT_BONUS = client_bonus
+
+SERVER_BONUS = server_bonus
+
 CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
-SRCS = libft_nedeed.c
+SRCS_CLIENT = libft_nedeed.c\
+							client.c
 
-OBJ = ${SRCS:.c=.o}
+SRCS_SERVER = libft_nedeed.c\
+							server.c
+
+SRCS_BONUS_CLIENT = libft_nedeed_bonus.c\
+										client_bonus.c
+
+SRCS_BONUS_SERVER = libft_nedeed_bonus.c\
+										server_bonus.c
+
+
+OBJ_CLIENT = ${SRCS_CLIENT:.c=.o}
+
+OBJ_SERVER = ${SRCS_SERVER:.c=.o}
+
+OBJ_BONUS_CLIENT = ${SRCS_BONUS_CLIENT:.c=.o}
+
+OBJ_BONUS_SERVER = ${SRCS_BONUS_SERVER:.c=.o}
 
 all : $(CLIENT) $(SERVER)
 
-$(CLIENT) : $(OBJ)
-			$(CC) $(CFLAGS) client.c $< -o $@
+bonus : $(CLIENT_BONUS) $(SERVER_BONUS)
 
-$(SERVER) : $(OBJ)
-			$(CC) $(CFLAGS) server.c $< -o $@
+$(CLIENT) : $(OBJ_CLIENT) 
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(SERVER) : $(OBJ_SERVER)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(CLIENT_BONUS) : $(OBJ_BONUS_CLIENT)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(SERVER_BONUS) : $(OBJ_BONUS_SERVER)
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean :
-	$(RM) $(OBJ)
+	$(RM) $(OBJ_CLIENT) $(OBJ_SERVER) $(OBJ_BONUS_CLIENT) $(OBJ_BONUS_SERVER)
 
 fclean : clean
-	$(RM) $(CLIENT) $(SERVER)
+	$(RM) $(CLIENT) $(SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
 
-re : all fclean
+re : fclean all

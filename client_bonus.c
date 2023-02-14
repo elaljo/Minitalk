@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 21:44:31 by moelalj           #+#    #+#             */
-/*   Updated: 2023/02/13 15:44:27 by moelalj          ###   ########.fr       */
+/*   Created: 2023/02/13 12:51:35 by moelalj           #+#    #+#             */
+/*   Updated: 2023/02/13 15:41:49 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int	*dectobinary(int nb)
 {
+	int	compare;
 	int	i;
-	int	j;
 	int	count;
 	int	*var;
 
-	count = 0;
-	var = malloc(8 * sizeof(int));
 	i = 7;
+	count = 0;
+	compare = 0;
+	var = malloc (8 * sizeof(int));
 	while (i >= 0)
 	{
-		j = nb >> i;
+		compare = nb >> i;
 		i--;
-		if (j & 1)
+		if (compare & 1)
 			var[count++] = 1;
 		else
 			var[count++] = 0;
@@ -34,12 +35,12 @@ int	*dectobinary(int nb)
 	return (var);
 }
 
-void	switch_dtob_and_send(char **argv)
+void	switch_dtob_and_sent(char **argv)
 {
 	int	pid;
-	int	i;
 	int	*dbin;
 	int	dbin_counter;
+	int	i;
 
 	pid = ft_atoi(argv[1]);
 	i = 0;
@@ -59,13 +60,15 @@ void	switch_dtob_and_send(char **argv)
 		dbin_counter = 0;
 		i++;
 	}
+	if (argv[2][i] == '\0')
+		ft_putstr_fd("    (( The message was sent successfully ✅ ))", 1);
 }
 
 int	main(int argc, char *argv[])
 {
 	if (argc == 3)
-		switch_dtob_and_send(argv);
+		switch_dtob_and_sent(argv);
 	else
-		ft_putstr_fd("<^Eroor^>", 1);
+		ft_putstr_fd("<Eroor>", 1);
 	return (0);
 }
