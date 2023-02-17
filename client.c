@@ -56,6 +56,7 @@ void	switch_dtob_and_send(char **argv)
 			usleep(500);
 			dbin_counter++;
 		}
+		free(dbin);
 		dbin_counter = 0;
 		i++;
 	}
@@ -63,9 +64,9 @@ void	switch_dtob_and_send(char **argv)
 
 int	main(int argc, char *argv[])
 {
-	if (argc == 3)
+	if ((argc == 3) && (ft_atoi(argv[1]) > 0))
 		switch_dtob_and_send(argv);
 	else
-		ft_putstr_fd("<^Eroor^>", 1);
+		ft_putstr_fd("ATTENTION: <!> Something wrong with the arguments\n", 1);
 	return (0);
 }

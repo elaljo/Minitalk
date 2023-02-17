@@ -14,20 +14,20 @@
 
 int	*dectobinary(int nb)
 {
-	int	compare;
+	int	j;
 	int	i;
 	int	count;
 	int	*var;
 
 	i = 7;
 	count = 0;
-	compare = 0;
+	j = 0;
 	var = malloc (8 * sizeof(int));
 	while (i >= 0)
 	{
-		compare = nb >> i;
+		j = nb >> i;
 		i--;
-		if (compare & 1)
+		if (j & 1)
 			var[count++] = 1;
 		else
 			var[count++] = 0;
@@ -37,13 +37,12 @@ int	*dectobinary(int nb)
 
 void	switch_dtob_and_sent(char **argv)
 {
-	int	pid;
-	int	*dbin;
-	int	dbin_counter;
-	int	i;
+	int				pid;
+	int				*dbin;
+	int				dbin_counter;
+	static int		i;
 
 	pid = ft_atoi(argv[1]);
-	i = 0;
 	dbin_counter = 0;
 	while (argv[2][i] != '\0')
 	{
@@ -57,18 +56,17 @@ void	switch_dtob_and_sent(char **argv)
 			usleep(500);
 			dbin_counter++;
 		}
+		free(dbin);
 		dbin_counter = 0;
 		i++;
 	}
-	if (argv[2][i] == '\0')
-		ft_putstr_fd("    (( The message was sent successfully ✅ ))", 1);
 }
 
 int	main(int argc, char *argv[])
 {
-	if (argc == 3)
+	if ((argc == 3) && (ft_atoi(argv[1]) > 0))
 		switch_dtob_and_sent(argv);
 	else
-		ft_putstr_fd("<Eroor>", 1);
+		ft_putstr_fd("ATTENTION: <!> Something wrong with the arguments\n", 1);
 	return (0);
 }

@@ -1,6 +1,6 @@
-CLIENT = client 
+NAME = client 
 
-SERVER = server
+NAME_2 = server
 
 CLIENT_BONUS = client_bonus
 
@@ -33,14 +33,14 @@ OBJ_BONUS_CLIENT = ${SRCS_BONUS_CLIENT:.c=.o}
 
 OBJ_BONUS_SERVER = ${SRCS_BONUS_SERVER:.c=.o}
 
-all : $(CLIENT) $(SERVER)
+all : $(NAME) $(NAME_2)
 
 bonus : $(CLIENT_BONUS) $(SERVER_BONUS)
 
-$(CLIENT) : $(OBJ_CLIENT) 
+$(NAME) : $(OBJ_CLIENT) 
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(SERVER) : $(OBJ_SERVER)
+$(NAME_2) : $(OBJ_SERVER)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(CLIENT_BONUS) : $(OBJ_BONUS_CLIENT)
@@ -53,6 +53,6 @@ clean :
 	$(RM) $(OBJ_CLIENT) $(OBJ_SERVER) $(OBJ_BONUS_CLIENT) $(OBJ_BONUS_SERVER)
 
 fclean : clean
-	$(RM) $(CLIENT) $(SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
+	$(RM) $(NAME) $(NAME_2) $(CLIENT_BONUS) $(SERVER_BONUS)
 
 re : fclean all

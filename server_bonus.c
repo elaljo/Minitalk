@@ -56,10 +56,7 @@ void	handler(int signal, siginfo_t *info, void *t)
 		c = 0;
 	pid = info->si_pid;
 	if (!c)
-	{
 		only_bin = malloc(8 * sizeof(int));
-		c = 0;
-	}
 	if (signal == SIGUSR1)
 		only_bin[c++] = 0;
 	else if (signal == SIGUSR2)
@@ -81,7 +78,7 @@ int	main(void)
 	ft_putnbr_fd(pid, 1);
 	ft_putchar_fd('\n', 1);
 	sa.sa_sigaction = &handler;
-	sa.sa_flags = 0;
+	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
